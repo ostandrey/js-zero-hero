@@ -1,0 +1,23 @@
+1) Understanding the problem
+- How to get data from input? -> event.target.value
+- How to display the result on click btn, depense on condition? -> oncklick add 
+- How to count score?
+- Save score and display it into field;
+- Compare current score with previous, the bigger save ito highscore var
+- How to restore all data?
+- Restore data on click
+
+
+2) Breaking up into sub-problems
+ -> Section 1
+ - Get input field
+ - Get button
+ - Get message
+ - Get guess
+ - Create listener on click
+ - Check if input not empty
+ - Compare input value with guess value
+ - Add two|3 conditions (good/bad results)
+ - Add static value of number
+
+  -> Section 2
