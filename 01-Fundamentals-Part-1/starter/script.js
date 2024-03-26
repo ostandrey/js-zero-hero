@@ -2,9 +2,6 @@ let country = 'US';
 let cotinent = 'America';
 let population = 148;
 
-console.log('hrello')
-
-
 let language = 'english';
 language = 'french';
 let isIsland = false;

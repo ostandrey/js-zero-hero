@@ -48,7 +48,6 @@ function third(params) {
 
 // console.log(bob.getName());
 
-
 // ====> Regular functions and arrow functions
 const bob = {
   name: 'Bob',
@@ -56,3 +55,24 @@ const bob = {
     return this.name;
   },
 };
+
+// ===> Primitives and Objects
+let person1 = 'Bob';
+let person2 = person1;
+person1 = 'rob';
+// Primitives -> Identifier 'person1' assign to address in memory 0001 that have a value 'Bob'
+// console.log(person1, person2); // -> rob, bob
+
+const person3 = {
+  name: 'Bob',
+};
+
+const person4 = person3;
+person3.name = 'Rob';
+// objects -> Referense type, identifier 'person4' assign to address in memory stack to value address in heap, that contain value of obj
+// console.log(person3.name, person4.name); // -> Rob, rob
+
+// Shallow copying objects
+const person3Copy = Object.assign({}, person3);
+person3Copy.name = 'Lob';
+console.log(person3Copy);
