@@ -95,6 +95,25 @@ const {
 } = openingHours;
 // console.log(o, c);
 
+// ===> Spread operator
+const arr1 = [6, 8, 9];
+// const badNewArr = [1,3, arr1[0], arr1[1]]
+const newArr = [1, 2, ...arr];
+
+// Copy aray
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// Join arrays
+const menuJoined = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menuJoined);
+
+// iterables: arrays, strings, maps, sets. Not objects
+const str = 'jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+
+// Spread only in arrays anf 
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
