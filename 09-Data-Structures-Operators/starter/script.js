@@ -65,6 +65,37 @@ const [i, , [j, k]] = nested;
 const [p = 1, q = 1, r = 1] = [8, 9];
 // console.log(p, q, r);
 
+// ===> Destructuring Objects
+
+const { name, openingHours, categories } = restaurant;
+
+// --> Rename variables
+const {
+  name: restrauntName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+
+// console.log(name, restrauntName);
+
+// --> Default value
+const { menu = [], starterMenu: starters = [] } = restaurant;
+// console.log(menu);
+
+// --> Mutating vars
+let a = 111;
+let b = 1231;
+const objNums = { a: 23, b: 4, c: 1 };
+({ a, b } = objNums);
+// console.log(a, b);
+
+// --> Nested obj
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+// console.log(o, c);
+
+////////////////////////////////////////////////////////////////
 // TASKS
 
 const books = [
@@ -292,6 +323,7 @@ const books = [
   },
 ];
 
+// Destructuring Arrays
 // 1.1
 const [firstBook, secondBook] = books;
 // console.log(firstBook, secondBook);
@@ -313,3 +345,44 @@ const [[, rating], [, ratingsCount]] = ratings;
 const ratingStars = [63405, 1808];
 const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
 // console.log(fiveStarRatings, oneStarRatings, threeStarRatings);
+
+// Destructuring Objects
+
+// 2.1
+const { title, author, ISBN } = books[0];
+// console.log(title, author, ISBN);
+
+// 2.2
+const { tags: keywords } = books[0];
+// console.log(tags);
+
+// 2.3
+const { language, programmingLanguage = 'unknown' } = books[6];
+// console.log(language, programmingLanguage);
+
+// 2.4
+let bookTitle = 'unknown';
+let bookAuthor = 'unknown';
+
+({ title: bookTitle, author: bookAuthor } = books[0]);
+// console.log(bookTitle, bookAuthor);
+
+// 2.5
+const {
+  thirdParty: {
+    goodreads: { rating: bookRating },
+  },
+} = books[0];
+
+// 2.6
+const printBookInfo = ({ title, author, year = 'unknown' }) => {
+  console.log(`${title} by ${author}, ${year}`);
+};
+
+printBookInfo({
+  title: 'Algorithms',
+  author: 'Robert Sedgewick',
+  year: '2011',
+});
+
+printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
