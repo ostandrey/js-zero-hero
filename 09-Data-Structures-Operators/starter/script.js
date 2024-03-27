@@ -15,6 +15,14 @@ const restaurant = {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+
+  orderPizza: function (mainIngred, ...otherIngred) {
+    console.log(mainIngred, otherIngred);
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -105,14 +113,60 @@ const mainMenuCopy = [...restaurant.mainMenu];
 
 // Join arrays
 const menuJoined = [...restaurant.mainMenu, ...restaurant.starterMenu];
-console.log(menuJoined);
+// console.log(menuJoined);
 
 // iterables: arrays, strings, maps, sets. Not objects
 const str = 'jonas';
 const letters = [...str, ' ', 'S.'];
-console.log(letters);
+// console.log(letters);
 
-// Spread only in arrays anf 
+// Spread only in arrays anf
+
+// Example
+const ingreds = [
+  // prompt('let`s make a pasta! Ingredient 1 '),
+  // prompt('let`s make a pasta! Ingredient 2'),
+  // prompt('let`s make a pasta! Ingredient 3 '),
+];
+
+// restaurant.orderPasta(...ingreds);
+
+// -> Objects
+const newRestraunt = { ...restaurant.openingHours, founedr: '' };
+
+// Copy objects
+const restrauntCopy = { ...restaurant };
+
+// ====> Rest operator
+
+// SPREAD, because on RIGHT side of =
+const arr5 = [1, 2, 3, ...[5, 6]];
+
+// REST, because on LEFT side =
+const [a1, b1, ...others] = [1, 2, 3, 4, 5];
+
+//  --> 1) Destructuring
+const [pizza, , risotto, ...otherfood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+
+// Objects rest
+const { sat, ...weekdays } = restaurant.openingHours;
+// console.log(sat, weekdays);
+
+//  --> 2) Functions
+const add = (...args) => {
+  let sum = 0;
+  for (let i = 0; i < args.length; i++) {
+    sum += args[i];
+  }
+  // console.log(args, sum);
+};
+
+add(2, 3);
+
+// restaurant.orderPizza('mushrooms', 'onion', 'olived');
 
 ////////////////////////////////////////////////////////////////
 // TASKS
@@ -395,7 +449,7 @@ const {
 
 // 2.6
 const printBookInfo = ({ title, author, year = 'unknown' }) => {
-  console.log(`${title} by ${author}, ${year}`);
+  // console.log(`${title} by ${author}, ${year}`);
 };
 
 printBookInfo({
@@ -405,3 +459,32 @@ printBookInfo({
 });
 
 printBookInfo({ title: 'Algorithms', author: 'Robert Sedgewick' });
+
+// 3.1
+
+const bookAuthors = [...books[0].author, ...books[1].author];
+
+// console.log(bookAuthors);
+
+// 3.2
+
+const spellWord = string => {
+  console.log(...string);
+};
+
+// spellWord('JavaScript');
+
+// 4.1
+const [mainKeyword, ...rest] = books[0].keywords;
+// console.log(mainKeyword, rest);
+
+// 4.2
+const { publisher: bookPublisher, ...restOfTheBook } = books[1];
+// console.log(bookPublisher, restOfTheBook);
+
+// 4.3
+const printBookAuthorsCount = (title, ...authors) => {
+  console.log(`The book ${title} has ${authors.length} authors`);
+};
+
+printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
