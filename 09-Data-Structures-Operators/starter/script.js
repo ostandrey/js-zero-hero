@@ -168,6 +168,29 @@ add(2, 3);
 
 // restaurant.orderPizza('mushrooms', 'onion', 'olived');
 
+// ====> Short Circuiting (&& ||)
+
+// OR - ||
+// Use ANY data type, return ANY data type, short-circuting
+// Return first truthy value
+
+// console.log(3 || 'Bob'); // -> 3
+// console.log(undefined || 0 || '' || 'hello'); // -> hello
+
+const guests1 = restaurant.numGuests || 10; // ->  10, like defult value
+
+// AND - &&
+// Find and return first falsy value
+
+console.log(0 && 'Bob'); // -> 0
+
+// Example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
@@ -488,3 +511,16 @@ const printBookAuthorsCount = (title, ...authors) => {
 };
 
 printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
+
+// 5.1
+const hasExamplesInJava = book => {
+  return book.hasExampleInJava === 'Java' || 'no data available';
+};
+
+hasExamplesInJava(books[0]);
+
+// 5.2
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent &&
+    console.log(`${books[i].title} provides online content`);
+}
