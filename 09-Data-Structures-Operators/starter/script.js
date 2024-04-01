@@ -182,19 +182,48 @@ const guests1 = restaurant.numGuests || 10; // ->  10, like defult value
 // AND - &&
 // Find and return first falsy value
 
-console.log(0 && 'Bob'); // -> 0
+// console.log(0 && 'Bob'); // -> 0
 
 // Example
-if (restaurant.orderPizza) {
-  restaurant.orderPizza('mushrooms', 'spinach');
-}
+// if (restaurant.orderPizza) {
+//   restaurant.orderPizza('mushrooms', 'spinach');
+// }
 
-restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+// restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
 // ===> Nullish coalescing Operator (??)
 //  Nullish: null and undefined (NOT 0 or '')
 const guestCorrect = restaurant.numGuests ?? 10;
-console.log(guestCorrect);
+// console.log(guestCorrect);
+
+//  ====> Logical Assignments operators
+
+const rest1 = {
+  name: 'Roberto',
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'Prima',
+  owner: 'Mario',
+};
+
+//  ---> OR assignment operator
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest1.numGuests || 10;
+
+// Don`t work with falsy  values (example), so return not 0, but 10
+// rest1.numGuests ||= 10;
+// rest2.numGuests ||= 10;
+
+// Solve this problem by nulish operator (??)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// ---> AND assignment operator
+rest1.owner &&= 'Anonymous'; //falsy - nothing changed
+rest2.owner &&= 'Anonymous'; //truthy - owner exist
+// console.log(rest1, rest2);
 
 ////////////////////////////////////////////////////////////////
 // TASKS
@@ -512,7 +541,7 @@ const { publisher: bookPublisher, ...restOfTheBook } = books[1];
 
 // 4.3
 const printBookAuthorsCount = (title, ...authors) => {
-  console.log(`The book ${title} has ${authors.length} authors`);
+  // console.log(`The book ${title} has ${authors.length} authors`);
 };
 
 printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
@@ -526,14 +555,33 @@ hasExamplesInJava(books[0]);
 
 // 5.2
 for (let i = 0; i < books.length; i++) {
-  books[i].onlineContent &&
-    console.log(`${books[i].title} provides online content`);
+  // books[i].onlineContent &&
+  //   console.log(`${books[i].title} provides online content`);
 }
 
 // 6.1
 for (let i = 0; i < books.length; i++) {
-  books[i].onlineContent ??
-    console.log(
-      `"${books[i].title}" provides no data about its online content`
-    );
+  // books[i].onlineContent ??
+  //   console.log(
+  //     `"${books[i].title}" provides no data about its online content`
+  //   );
+}
+
+// 7.1
+
+// console.log(books.map(el => (el.edition ||= 1)));
+// books.forEach(el => console.log((el.edition ||= 1)));
+
+for (let i = 0; i < books.length; i++) {
+  const element = books[i];
+  element.edition ||= 1;
+  // console.log(element.edition);
+}
+
+// 7.2
+for (let i = 0; i < books.length; i++) {
+  const element = books[i];
+  element.thirdParty.goodreads.rating &&= !(
+    element.thirdParty.goodreads.rating < 4.2
+  );
 }
