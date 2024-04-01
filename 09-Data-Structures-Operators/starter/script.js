@@ -4,6 +4,23 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const weekdays1 = ['mon', 'tue', 'wed'];
+
+const openingHours = {
+  [weekdays1[0]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -11,7 +28,14 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
+
+  // ES6 enhanced obj literals methods
+
+  // order: function (starterIndex, mainIndex) {
+  //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  // },
+
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -23,20 +47,9 @@ const restaurant = {
     console.log(mainIngred, otherIngred);
   },
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  // ES6 enhanced obj literals
+  // openingHours: openingHours,
+  openingHours,
 };
 
 // ===> Destructuring
@@ -75,8 +88,8 @@ const [p = 1, q = 1, r = 1] = [8, 9];
 
 // ===> Destructuring Objects
 
-const { name, openingHours, categories } = restaurant;
-
+const { name, openingHours: openingHours2, categories } = restaurant;
+console.log(openingHours2);
 // --> Rename variables
 const {
   name: restrauntName,
@@ -229,12 +242,14 @@ rest2.owner &&= 'Anonymous'; //truthy - owner exist
 
 const menu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
 for (const item of menu2) {
-  console.log(item);
+  // console.log(item);
 }
 
 for (const [i, el] of menu2.entries()) {
-  console.log(i, el);
+  // console.log(i, el);
 }
+
+// Enhanced object literals
 
 ////////////////////////////////////////////////////////////////
 // TASKS
@@ -677,15 +692,16 @@ const {
 // number of goals that were scored in total (number of player names passed in)
 
 const printGoals = (...goalPlayers) => {
-  console.log(goalPlayers);
-  console.log(`${goalPlayers.length} - total score`);
+  // console.log(goalPlayers);
+  // console.log(`${goalPlayers.length} - total score`);
 };
 printGoals(...game.scored);
 
 // 7. The team with the lower odd is more likely to win. Print to the console which
 // team is more likely to win, without using an if/else statement or the ternary
 // operator
-console.log(team1 < team2 && console.log('more likely to win'));
-console.log(team1 > team2 && console.log('more likely to win'));
+
+// console.log(team1 < team2 && console.log('more likely to win'));
+// console.log(team1 > team2 && console.log('more likely to win'));
 
 // console.log(game);
