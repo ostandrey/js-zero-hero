@@ -225,6 +225,17 @@ rest1.owner &&= 'Anonymous'; //falsy - nothing changed
 rest2.owner &&= 'Anonymous'; //truthy - owner exist
 // console.log(rest1, rest2);
 
+// ======> looping Arrays: For-of
+
+const menu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const item of menu2) {
+  console.log(item);
+}
+
+for (const [i, el] of menu2.entries()) {
+  console.log(i, el);
+}
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
