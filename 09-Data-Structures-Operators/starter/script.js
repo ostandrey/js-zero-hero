@@ -89,7 +89,7 @@ const [p = 1, q = 1, r = 1] = [8, 9];
 // ===> Destructuring Objects
 
 const { name, openingHours: openingHours2, categories } = restaurant;
-console.log(openingHours2);
+// console.log(openingHours2);
 // --> Rename variables
 const {
   name: restrauntName,
@@ -249,7 +249,20 @@ for (const [i, el] of menu2.entries()) {
   // console.log(i, el);
 }
 
-// Enhanced object literals
+// =====> Enhanced object literals
+
+// ====> Optional Chaining
+// prevent error in console
+
+// console.log(restaurant.openingHours.sun?.open);
+
+// -> exapmle
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  // console.log(`On ${day}, open at ${open}`);
+}
 
 ////////////////////////////////////////////////////////////////
 // TASKS
