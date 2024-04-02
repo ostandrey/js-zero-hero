@@ -264,6 +264,32 @@ for (const day of days) {
   // console.log(`On ${day}, open at ${open}`);
 }
 
+// ======> Looping objects: object Keys, Values and Entries
+
+// -> property NAMES
+
+const properties = Object.keys(openingHours2);
+// console.log(properties);
+
+let openStr = `we are open on ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+
+// console.log(openStr);
+
+// --> Property VALUES
+const values = Object.values(openingHours2);
+// console.log(values);
+
+// --> Entire OBJECT
+const entries = Object.entries(openingHours2);
+// console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  // console.log(`on ${key} we open at ${open} and close at ${close}`);
+}
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
@@ -779,3 +805,25 @@ const getFirstKeyword = book => {
 };
 
 // console.log(getFirstKeyword(books[0]));
+
+// 11.1
+const entries1 = [];
+const goodreads = books[0].thirdParty.goodreads;
+for (const goodreadsKey of Object.keys(goodreads)) {
+  entries1.push([goodreadsKey]);
+}
+
+// 11.2
+
+for (const [index, value] of Object.values(goodreads).entries()) {
+  entries1[index].push(value);
+}
+
+// 11.3
+
+const entries2 = Object.entries(goodreads);
+
+// 11.4
+
+// console.log(entries1);
+// console.log(entries2);
