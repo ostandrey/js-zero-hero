@@ -290,6 +290,38 @@ for (const [key, { open, close }] of entries) {
   // console.log(`on ${key} we open at ${open} and close at ${close}`);
 }
 
+//  ======> Data Structure: Set
+
+// ---> Set - collection of a unique values
+// Set is not array, but iterable, does not have indexes
+const orderSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Pasta']);
+// console.log(orderSet);
+
+// console.log(new Set('jonas'));
+
+// console.log(orderSet.size); // how musch uvique values
+// console.log(orderSet.has('Pizza')); // check if exist
+
+// Add
+orderSet.add('Garlic Bread');
+// console.log(orderSet);
+
+// Delete
+orderSet.delete('Garlic Bread');
+// console.log(orderSet);
+
+// Delete all values
+orderSet.clear();
+// console.log(orderSet);
+
+// Loop Set
+// for (const order of orderSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+// console.log(staffUnique);
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
@@ -875,3 +907,27 @@ for (const player of scoreValues) {
 }
 
 // console.log(scorers);
+
+// 12.1
+const allKeywords = [];
+
+for (const book of books) {
+  allKeywords.push(...book.keywords);
+}
+
+// 12.2
+const uniqueKeywords = new Set(allKeywords);
+
+// 12.3
+uniqueKeywords.add('coding');
+uniqueKeywords.add('science');
+
+// 12.4
+uniqueKeywords.delete('business');
+
+// 12.5
+const uniqueKeywordsArr = [...uniqueKeywords];
+
+// 12.6
+uniqueKeywords.clear();
+// console.log(uniqueKeywordsArr);
