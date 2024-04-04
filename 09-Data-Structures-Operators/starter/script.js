@@ -322,6 +322,61 @@ const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
 const staffUnique = [...new Set(staff)];
 // console.log(staffUnique);
 
+// =====> Data structure: Map
+// -----> Map: Fundamentals
+// Can map values to keys. Data is stored in key value pairs in maps
+// The keys in map can have any type. * in objects keys are always string
+
+const restMap = new Map();
+restMap.set('name', 'Italiano');
+restMap.set(1, 'italy');
+restMap.set(2, 'lisbon');
+restMap
+  .set('categories', ['Italian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'we are open')
+  .set(false, 'Weare closed');
+
+// console.log(restMap.get('name'));
+// console.log(restMap.get(true));
+
+const time = 21;
+// console.log(
+//   restMap.get(time > restMap.get('open') && time < restMap.get('close'))
+// );
+
+// console.log(restMap.has('categories'));
+restMap.delete(2);
+// console.log(restMap.size);
+// console.log(restMap.clear());
+
+restMap.set([1, 2], 'Test');
+// console.log(restMap.get([1, 2])); // undefined because of defferent objects
+
+// -----> Map: Iterations
+const question = new Map([
+  ['question', 'the best programming language? '],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  [true, 'Correct'],
+  [false, 'try again'],
+  ['correct', 3],
+]);
+
+// quizz app
+for (const [key, value] of question) {
+  // if (typeof key === 'number') console.log(`answer ${key}: ${value}`);
+}
+
+// const answer = Number(prompt('Your answer'));
+// console.log(question.get(answer === question.get('correct')));
+
+// ----> Convert map to array
+// console.log([...question]);
+// console.log(typeof [...question.keys()][2]);
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
