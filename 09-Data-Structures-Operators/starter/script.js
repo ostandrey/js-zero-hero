@@ -986,3 +986,31 @@ const uniqueKeywordsArr = [...uniqueKeywords];
 // 12.6
 uniqueKeywords.clear();
 // console.log(uniqueKeywordsArr);
+
+// 13.1
+const bookMap = new Map([
+  ['title', 'Clean Code'],
+  ['author', 'Robert C. Martin'],
+]);
+
+// 13.2
+bookMap.set('pages', 464);
+// console.log(bookMap);
+
+// 13.3
+// console.log(`${bookMap.get('title')} by ${bookMap.get('author')}`);
+
+// 13.4
+// console.log(bookMap.size);
+
+// 13.5
+// console.log(bookMap.has('author') && 'The author of the book is known');
+
+// 14.1
+const firstBookMap = new Map(Object.entries(books[0]));
+// console.log(firstBookMap);
+
+// 14.2
+for (const [key, value] of firstBookMap) {
+  // if (typeof value === 'number') console.log(key);
+}
