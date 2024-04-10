@@ -377,6 +377,108 @@ for (const [key, value] of question) {
 // console.log([...question]);
 // console.log(typeof [...question.keys()][2]);
 
+// =====> Work with strings - Part 1
+
+const airline = 'TAP Air Port';
+const plane = 'A320';
+
+// Get letter
+// console.log(plane[0]);
+// console.log('B737'[0]);
+
+// // length
+// console.log(plane.length);
+
+// // Index
+// console.log(airline.indexOf('r'));
+// console.log(airline.lastIndexOf('r'));
+// console.log(airline.indexOf('Air'));
+
+// // Slice
+// console.log(airline.slice(4));
+// console.log(airline.slice(4, 7));
+
+// // Extract first word
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// // Extract last word
+// console.log(airline.slice(airline.indexOf(' ') + 1));
+
+// // Extract letters from end
+// console.log(airline.slice(-2));
+
+// // Extract string without letter
+// console.log(airline.slice(1, -1));
+
+function checkMiddleSeats(seat) {
+  const s = seat.slice(-1);
+  // if (s === 'B' || s === 'E') console.log('Middle seat');
+  // else console.log('((((');
+}
+
+checkMiddleSeats('11B');
+checkMiddleSeats('22E');
+checkMiddleSeats('3C');
+
+//  Boxing -> create object wrapper String and convert to primitive String
+// console.log(new String('jonas'));
+// console.log(typeof new String('jonas'));
+
+// =====> Work with strings - Part 2
+
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+
+// Fix capitalization in name
+const passenger = 'jOnAS';
+
+const passengerCorrect =
+  passenger[0].toUpperCase() + passenger.slice(1).toLowerCase();
+// console.log(passengerCorrect);
+
+// Comparing emails
+const emailPass = 'hello@jonas.io';
+const loginEmail = '  Hello@Jonas.IO \n';
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail);
+
+// Replace
+const priceGB = '288,97*';
+const priceUS = priceGB.replace('*', '$').replace(',', '.');
+// console.log(priceUS);
+
+const announcement = 'Door left and door right';
+// replaceAll -> replace all words
+// console.log(announcement.toLowerCase().replaceAll('door', 'gate'));
+// with regular expression
+// console.log(announcement.toLowerCase().replace(/door/g, 'gate'));
+
+// Booleans: includes, strartsWith, endsWith
+
+const plane2 = 'Airplane A320';
+// console.log(plane2.includes('A320'));
+// console.log(plane2.startsWith('Air'));
+// console.log(plane2.endsWith('460'));
+
+// Practise exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    // console.log('no allowed');
+  } else {
+    // console.log('allowed, welcome');
+  }
+};
+
+checkBaggage('food, personal Knife, food');
+checkBaggage('clothes, soap');
+checkBaggage('snacks, gun');
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
@@ -1050,48 +1152,84 @@ for (const [min, event] of gameEvents) {
   // console.log(`[${half} Half] ${min}: ${event}`);
 }
 
-// =====> Work with strings - Part 1
+// 15.1
+// console.log(
+//   books[0].ISBN[6],
+//   books[0].ISBN[4],
+//   books[0].ISBN[9],
+//   books[0].ISBN[8]
+// );
 
-const airline = 'TAP Air Port';
-const plane = 'A320';
+// 15.2
+const quote =
+  'A computer once beat me at chess, but it was no match for me at kick boxing';
+// console.log(quote.indexOf('chess'));
 
-// Get letter
-// console.log(plane[0]);
-// console.log('B737'[0]);
+// 15.3
+// console.log(quote.slice(quote.lastIndexOf(' ') + 1));
 
-// // length
-// console.log(plane.length);
+// 15.4
+const isContributor = name => {
+  // const contributor1 = name.slice(name.lastIndexOf(' ') + 1);
+  // if (contributor1 === '(Contributor)') return true;
 
-// // Index
-// console.log(airline.indexOf('r'));
-// console.log(airline.lastIndexOf('r'));
-// console.log(airline.indexOf('Air'));
+  const contributor = '(Contributor)';
+  return name.includes(contributor);
+};
 
-// // Slice
-// console.log(airline.slice(4));
-// console.log(airline.slice(4, 7));
+// console.log(isContributor('Julie Sussman (Contributor)'));
 
-// // Extract first word
-// console.log(airline.slice(0, airline.indexOf(' ')));
-// // Extract last word
-// console.log(airline.slice(airline.indexOf(' ') + 1));
+// 16.1
+const normalizeAuthorName = name => {
+  const trimmedLowerName = name.trim().toLowerCase();
+  const authorName = trimmedLowerName.replace(
+    trimmedLowerName.slice(trimmedLowerName.lastIndexOf(' ')),
+    ''
+  );
 
-// // Extract letters from end
-// console.log(airline.slice(-2));
+  let firstName = authorName.slice(0, authorName.indexOf(' '));
+  let secondname = authorName.slice(authorName.lastIndexOf(' ') + 1);
 
-// // Extract string without letter
-// console.log(airline.slice(1, -1));
+  const firstNameCapitilize =
+    firstName[0].toUpperCase() + firstName.slice(1, firstName.length);
 
-function checkMiddleSeats(seat) {
-  const s = seat.slice(-1);
-  // if (s === 'B' || s === 'E') console.log('Middle seat');
-  // else console.log('((((');
-}
+  const secondNameCapitilize =
+    secondname[0].toUpperCase() + secondname.slice(1, secondname.length);
 
-checkMiddleSeats('11B');
-checkMiddleSeats('22E');
-checkMiddleSeats('3C');
+  // 2
+  // const creds = authorName
+  //   .split(' ')
+  //   .map(cred => cred[0].toUpperCase() + cred.slice(1, cred.length))
+  //   .join(' ');
 
-//  Boxing -> create object wrapper String and convert to primitive String
-// console.log(new String('jonas'));
-// console.log(typeof new String('jonas'));
+  return `${firstNameCapitilize} ${secondNameCapitilize}`;
+};
+
+// console.log(normalizeAuthorName('  JuliE sussMan (Contributor)'));
+
+// 16.2
+const newBookTitle = books[1].title.replace('Programs', 'Software');
+// console.log(newBookTitle);
+
+// 16.3
+const logBookTheme = title => {
+  const titleLower = title.toLowerCase();
+  switch (titleLower) {
+    case titleLower.strartWith('computer'):
+      console.log('This book is about computers');
+      break;
+
+    case titleLower.includes('algorithms') && titleLower.includes('structures'):
+      console.log('This book is about algorithms and data structures');
+      break;
+    case (titleLower.endsWith('system') || titleLower.endsWith('systems')) &&
+      !titleLower.includes('operating'):
+      console.log(
+        'This book is about some systems, but definitely not about operating systems'
+      );
+      break;
+    default:
+      console.log('hello');
+      break;
+  }
+};
