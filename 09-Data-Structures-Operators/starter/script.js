@@ -479,6 +479,50 @@ checkBaggage('food, personal Knife, food');
 checkBaggage('clothes, soap');
 checkBaggage('snacks, gun');
 
+// =====> Work with strings - Part 3
+
+// Split - create array of string
+// console.log('a+very+nice+str'.split('+'));
+
+// Split + Join
+const [firstName, lastName] = 'Jonas Shtented'.split(' ');
+const newName = ['Mr', firstName, lastName.toUpperCase()].join(' ');
+// console.log(newName);
+
+const capitalizeName = userName => {
+  const names = userName.split(' ');
+  const namesUpper = [];
+
+  for (const name of names) {
+    // namesUpper.push(name[0].toUpperCase() + name.slice(1));
+    namesUpper.push(name.replace(name[0], name[0].toUpperCase()));
+  }
+
+  // console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jess rob bob crob');
+
+// Padding
+const mes = 'Go to gate 32!';
+// console.log(mes.padStart(25, '+').padEnd(35, '+'));
+// console.log('lof'.padStart(25, '+'));
+// console.log('lof'.padEnd(25, '+'));
+
+// Real Example
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+
+  return last.padStart(str.length, '*');
+};
+
+// console.log(maskCreditCard(456789132456798));
+
+// Repeat
+const mes2 = 'bad weather ... All departues delayeed...';
+// console.log(mes2.repeat(5));
+
 ////////////////////////////////////////////////////////////////
 // TASKS
 
@@ -1233,3 +1277,48 @@ const logBookTheme = title => {
       break;
   }
 };
+
+// 17.1
+const bookCategories =
+  'science;computing;computer science;algorithms;business;operating systems;networking;electronics';
+
+const logBookCategories = bookCategories => {
+  const categories = bookCategories.split(';');
+  // console.log(categories.join('\n'));
+};
+
+logBookCategories(bookCategories);
+
+// 17.2
+
+const getKeywordsAsString = books => {
+  const allBooksKeywords = [];
+
+  for (const book of books) {
+    allBooksKeywords.push(...book.keywords);
+  }
+
+  const uniqueKeywordsStr = [...new Set(allBooksKeywords)].join(';');
+
+  console.log(uniqueKeywordsStr);
+};
+
+getKeywordsAsString(books);
+
+// 17.3
+
+const bookChapters = [
+  ['The Basics', 14],
+  ['Sorting', 254],
+  ['Searching', 372],
+  ['Graphs', 526],
+  ['Strings', 706],
+];
+
+function logBookChapters(bookChapters) {
+  for (const [chapter, page] of bookChapters) {
+    // console.log(`${chapter.padEnd(25, '_')} ${page}`);
+  }
+}
+
+logBookChapters(bookChapters);
