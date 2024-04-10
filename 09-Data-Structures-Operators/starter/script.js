@@ -1049,3 +1049,49 @@ for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'FIRST' : 'SECOND';
   // console.log(`[${half} Half] ${min}: ${event}`);
 }
+
+// =====> Work with strings - Part 1
+
+const airline = 'TAP Air Port';
+const plane = 'A320';
+
+// Get letter
+// console.log(plane[0]);
+// console.log('B737'[0]);
+
+// // length
+// console.log(plane.length);
+
+// // Index
+// console.log(airline.indexOf('r'));
+// console.log(airline.lastIndexOf('r'));
+// console.log(airline.indexOf('Air'));
+
+// // Slice
+// console.log(airline.slice(4));
+// console.log(airline.slice(4, 7));
+
+// // Extract first word
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// // Extract last word
+// console.log(airline.slice(airline.indexOf(' ') + 1));
+
+// // Extract letters from end
+// console.log(airline.slice(-2));
+
+// // Extract string without letter
+// console.log(airline.slice(1, -1));
+
+function checkMiddleSeats(seat) {
+  const s = seat.slice(-1);
+  // if (s === 'B' || s === 'E') console.log('Middle seat');
+  // else console.log('((((');
+}
+
+checkMiddleSeats('11B');
+checkMiddleSeats('22E');
+checkMiddleSeats('3C');
+
+//  Boxing -> create object wrapper String and convert to primitive String
+// console.log(new String('jonas'));
+// console.log(typeof new String('jonas'));
